@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+
+const steps = [
+  {
+    n: '01',
+    title: 'Acknowledge the problem',
+    text: 'Recognize the issue quickly, separate symptoms from the real business question, and decide what deserves attention first.',
+    detail: ['What changed?', 'Who is affected?', 'What would a useful outcome look like?']
+  },
+  {
+    n: '02',
+    title: 'Collect the right information',
+    text: 'Gather the key data points, understand the systems behind them, and map the process before deciding on a solution.',
+    detail: ['Source systems', 'Business rules', 'Ownership & handovers']
+  },
+  {
+    n: '03',
+    title: 'Analyse deeply',
+    text: 'Combine business context with technical analysis. Look for patterns, edge cases, missing definitions, and the points where trust breaks down.',
+    detail: ['Data quality', 'Process gaps', 'Root-cause analysis']
+  },
+  {
+    n: '04',
+    title: 'Propose the solution',
+    text: 'Explain the approach in plain language: what will change, why it should work, what the trade-offs are, and what needs approval before implementation.',
+    detail: ['Architecture', 'Impact', 'Agreement before build']
+  },
+  {
+    n: '05',
+    title: 'Implement carefully',
+    text: 'Optimise the query, model, report, integration, or workflow while keeping the solution understandable and maintainable.',
+    detail: ['Build', 'Test', 'Document']
+  },
+  {
+    n: '06',
+    title: 'Complete, verify, support',
+    text: 'Check that the result actually solves the original problem, make necessary adjustments, and leave the system easier to operate than before.',
+    detail: ['Validation', 'Handover', 'Continuous improvement']
+  },
+];
+
+const values = [
+  ['Start from scratch and finish', 'I enjoy taking an unclear problem all the way to something usable.'],
+  ['Improve repeating tasks', 'Repetition is usually a signal that a process can be made lighter.'],
+  ['Connect related data', 'Useful insight often appears when separate systems are understood together.'],
+  ['Communicate effectively', 'A solution is stronger when the people using it understand the logic behind it.'],
+  ['Share data literacy', 'Good data work should make other people more capable, not more dependent.'],
+  ['Design with responsibility', 'Business systems affect people, so technical decisions deserve context and care.'],
+];
+---
+<BaseLayout title="How I think — George Choulakis" description="How George Choulakis approaches data, automation, integration and business problems.">
+  <main class="container page">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">how I think</p>
+        <h1>Understand first. Build second.</h1>
+        <p class="lead">
+          I like technical work most when it starts with a real business problem and ends with something people can trust.
+          My process is less “jump into the tool” and more “understand the system, the data, and the people around it.”
+        </p>
+      </div>
+      <div class="hero-art">
+        <img src={`${base}illustrations/george-thinking.svg`} alt="George thinking about data, systems and automation" />
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="process-head">
+        <p class="eyebrow">my working loop</p>
+        <h2>From vague problem to reliable system.</h2>
+      </div>
+
+      <div class="flow">
+        {steps.map((step, i) => (
+          <article class="step">
+            <div class="marker">
+              <span class="num mono">{step.n}</span>
+              {i < steps.length - 1 && <span class="connector"></span>}
+            </div>
+            <div class="step-card">
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <ul>
+                {step.detail.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="values">
+      <div class="values-intro">
+        <p class="eyebrow">what I value</p>
+        <h2>The principles I keep coming back to.</h2>
+      </div>
+      <div class="value-grid">
+        {values.map(([title, text], i) => (
+          <article class="value">
+            <span class="mono">{String(i + 1).padStart(2,'0')}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+.page { padding-top:72px; }
+.hero { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
+h1 { font-size:clamp(3.7rem,8vw,7.3rem); line-height:.93; letter-spacing:-.06em; margin:16px 0 25px; }
+.lead { color:var(--muted); font-size:1.22rem; max-width:800px; }
+.hero-art img { border:2px solid #111; border-radius:30px; box-shadow:7px 7px 0 #111; transform:rotate(1deg); }
+.process { margin-top:110px; }
+.process-head { max-width:850px; }
+.process-head h2,.values-intro h2 { font-size:clamp(2.6rem,5vw,4.8rem); line-height:1; letter-spacing:-.045em; margin:14px 0 40px; }
+.flow { max-width:960px; }
+.step { display:grid; grid-template-columns:72px 1fr; gap:20px; align-items:stretch; }
+.marker { display:flex; flex-direction:column; align-items:center; }
+.num { width:48px; height:48px; border:2px solid #111; border-radius:50%; background:var(--yellow); display:grid; place-items:center; font-size:.72rem; font-weight:800; box-shadow:3px 3px 0 #111; z-index:1; }
+.connector { width:2px; background:#111; flex:1; min-height:36px; margin:6px 0; }
+.step-card { border:1.5px solid #111; background:#fff; border-radius:26px; padding:26px; margin-bottom:24px; box-shadow:4px 4px 0 rgba(21,23,26,.10); }
+.step-card h3 { font-size:clamp(1.55rem,3vw,2.25rem); margin:0 0 10px; letter-spacing:-.03em; }
+.step-card p { color:#4f5964; max-width:790px; }
+.step-card ul { display:flex; gap:8px; flex-wrap:wrap; list-style:none; padding:0; margin:18px 0 0; }
+.step-card li { border:1px solid #111; border-radius:999px; background:var(--blue-soft); padding:5px 9px; font-size:.75rem; }
+.values { margin-top:110px; }
+.values-intro { max-width:850px; }
+.value-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.value { min-height:220px; border:1.5px solid #111; border-radius:24px; padding:24px; background:#fff; box-shadow:4px 4px 0 #111; }
+.value:nth-child(2n) { background:#fff3c8; }
+.value span { color:#7c8791; font-size:.7rem; }
+.value h3 { font-size:1.35rem; line-height:1.05; margin:20px 0 12px; }
+.value p { color:#55606b; }
+@media(max-width:850px){
+  .hero{grid-template-columns:1fr;}
+  .hero-art{max-width:560px;}
+  .value-grid{grid-template-columns:1fr;}
+}
+</style>
