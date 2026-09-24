@@ -1,0 +1,25 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Writing' },
+  { href: '/projects', label: 'Projects' },
+];
+---
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/">George Choulakis</a>
+    <nav>
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+  </div>
+</header>
+
+<style>
+.site-header { padding: 22px 0; }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.brand { font-weight:800; }
+nav { display:flex; gap:20px; flex-wrap:wrap; }
+nav a { color:var(--muted); font-size:.95rem; }
+nav a:hover { color:var(--text); }
+</style>
