@@ -13,7 +13,7 @@ const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'long', year:'n
 ---
 <BaseLayout title={`${post.data.title} — George Choulakis`} description={post.data.description}>
   <main class="container article">
-    <a class="back mono" href={import.meta.env.BASE_URL + 'blog/'}>← writing</a>
+    <a class="back mono" href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/blog/'}>← writing</a>
     <p class="meta mono">{fmt.format(post.data.pubDate)} · {post.data.tags.join(' · ')}</p>
     <h1>{post.data.title}</h1>
     <p class="dek">{post.data.description}</p>
