@@ -1,25 +1,37 @@
 ---
+const base = import.meta.env.BASE_URL;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Writing' },
-  { href: '/projects', label: 'Projects' },
+  { href: url('/'), label: 'Home' },
+  { href: url('/about'), label: 'About' },
+  { href: url('/blog'), label: 'Writing' },
+  { href: url('/projects'), label: 'Projects' },
 ];
 ---
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/">George Choulakis</a>
-    <nav>
+    <a class="brand" href={url('/')}>
+      <span class="brand-dot"></span>
+      George Choulakis
+    </a>
+    <nav aria-label="Main navigation">
       {links.map((link) => <a href={link.href}>{link.label}</a>)}
+      <a class="contact" href="mailto:hello@georgechoulakis.com">Say hello</a>
     </nav>
   </div>
 </header>
 
 <style>
-.site-header { padding: 22px 0; }
+.site-header { padding: 22px 0; position: relative; z-index: 10; }
 .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.brand { font-weight:800; }
-nav { display:flex; gap:20px; flex-wrap:wrap; }
-nav a { color:var(--muted); font-size:.95rem; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.02em; }
+.brand-dot { width:13px; height:13px; border:2px solid #111; background:var(--yellow); border-radius:50%; display:inline-block; }
+nav { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+nav a { color:var(--muted); font-size:.92rem; font-weight:600; }
 nav a:hover { color:var(--text); }
+.contact { border:1.5px solid #111; color:var(--text); padding:8px 13px; border-radius:999px; background:#fff; box-shadow:2px 2px 0 #111; }
+@media (max-width:720px){
+  nav a:not(.contact) { display:none; }
+  .brand { font-size:.95rem; }
+}
 </style>
