@@ -1,53 +1,92 @@
-<svg viewBox="0 0 720 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Doodle of George thinking about data, music and automation">
-  <rect width="720" height="620" fill="#EAF5FD"/>
-  <g fill="none" stroke="#15171A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="360" cy="286" rx="115" ry="124" fill="#F5C7A9"/>
-    <path d="M250 250c8-79 54-128 113-128 67 0 111 42 118 126-21-38-48-46-69-25-13-28-38-27-50-1-16-28-44-24-54 6-20-24-44-10-58 22z" fill="#594033"/>
-    <circle cx="323" cy="283" r="5" fill="#15171A"/>
-    <circle cx="398" cy="283" r="5" fill="#15171A"/>
-    <path d="M333 330c21 18 42 18 61 0"/>
-    <path d="M275 279c-24 5-34 22-31 48 3 23 16 39 34 43"/>
-    <path d="M445 279c24 5 34 22 31 48-3 23-16 39-34 43"/>
-    <path d="M272 305c-15-8-27 5-25 20" stroke="#fff"/>
-    <path d="M449 305c15-8 27 5 25 20" stroke="#fff"/>
-    <path d="M276 365c-31 49-43 95-41 159h251c2-63-11-110-42-159-42 36-126 37-168 0z" fill="#7FB7E3"/>
-    <path d="M329 413c-7 28-15 48-32 68"/>
-    <path d="M392 414c7 24 18 46 34 64"/>
-    <path d="M300 477c-18 3-30 16-36 37"/>
-    <path d="M428 475c23 3 35 17 39 39"/>
-    <path d="M382 381c21 29 11 61-8 86"/>
-    <path d="M374 467c-10 10-17 18-22 29"/>
-    <path d="M361 406c31-14 61 20 39 43"/>
+<svg viewBox="0 0 760 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="George with curly hair, blue hoodie, white wired headphones, coffee, music, a cat, a database and a small toy figure">
+  <rect width="760" height="900" fill="#EAF5FD"/>
+  <g stroke="#15171A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- head -->
+    <ellipse cx="380" cy="235" rx="112" ry="122" fill="#F4C6A8"/>
+    <!-- curly hair -->
+    <path d="M276 210c-7-56 25-119 92-139 59-17 128 7 148 73 9 28 8 52 1 75-13-19-29-25-46-15-7-23-28-31-47-15-11-26-37-30-54-8-16-24-45-21-55 5-15-13-30-7-39 24z" fill="#4A3529"/>
+    <path d="M294 165c15-20 34-25 48-8 8-23 36-26 50-8 11-25 39-24 51-2 12-20 36-17 46 3 11-10 22-9 30-1" fill="none"/>
+    <path d="M309 126c16-20 39-21 51-5 16-24 45-25 61-3 14-20 42-20 57 2" fill="none"/>
+    <path d="M329 97c16-15 38-14 50 0 15-18 39-18 53 0" fill="none"/>
+
+    <!-- face -->
+    <circle cx="350" cy="235" r="6" fill="#15171A"/>
+    <circle cx="421" cy="235" r="6" fill="#15171A"/>
+    <path d="M360 286c22 16 43 15 63-4"/>
+    <!-- light beard marks -->
+    <g fill="#15171A" stroke="none">
+      <circle cx="322" cy="285" r="2.4"/><circle cx="334" cy="293" r="2.2"/><circle cx="347" cy="298" r="2.2"/>
+      <circle cx="361" cy="302" r="2.2"/><circle cx="376" cy="304" r="2.2"/><circle cx="392" cy="303" r="2.2"/>
+      <circle cx="407" cy="300" r="2.2"/><circle cx="421" cy="295" r="2.2"/><circle cx="433" cy="288" r="2.2"/>
+    </g>
+
+    <!-- ears/headphones -->
+    <circle cx="276" cy="254" r="18" fill="#F4C6A8"/>
+    <circle cx="486" cy="252" r="18" fill="#F4C6A8"/>
+    <circle cx="276" cy="254" r="6" fill="#fff"/>
+    <circle cx="486" cy="252" r="6" fill="#fff"/>
+    <path d="M277 260c15 54 33 93 56 128 20 31 34 66 33 102" stroke="#fff"/>
+    <path d="M486 258c-16 48-34 85-58 121-19 28-32 64-32 105" stroke="#fff"/>
+    <path d="M366 487c0 45-5 85-25 125" stroke="#fff"/>
+
+    <!-- hoodie body -->
+    <path d="M300 346c-35 50-49 113-49 203v137h252V549c0-90-15-154-50-203-42 31-111 31-153 0z" fill="#6E91BE"/>
+    <path d="M333 367c16 18 32 32 47 42 16-11 30-25 46-42" fill="none"/>
+    <path d="M284 504c-12 21-19 44-20 68"/>
+    <path d="M469 505c13 21 19 44 20 67"/>
+    <path d="M340 573c17-11 32-14 44-14"/>
+    <path d="M421 573c-16-11-31-14-43-14"/>
+
+    <!-- legs -->
+    <path d="M333 686v137" />
+    <path d="M430 686v137" />
+    <path d="M319 824c14 14 31 18 52 12" fill="#fff"/>
+    <path d="M415 824c18 14 38 18 59 10" fill="#fff"/>
+
+    <!-- coffee -->
+    <path d="M190 478h88v93h-88z" fill="#FFFDF8"/>
+    <path d="M278 493c28 0 38 20 38 40 0 19-11 32-38 32" fill="none"/>
+    <path d="M204 465c-14-21 3-33 0-49M231 465c-14-21 3-33 0-49" stroke="#FFD66F"/>
+    <path d="M251 512c24 19 33 41 38 64" />
+
+    <!-- cat -->
+    <path d="M535 654c38-36 105-32 132 12 21 34 15 96-15 123-36 33-103 32-133-1-24-26-22-93 16-134z" fill="#FFFDF8"/>
+    <path d="M548 652l12-38 30 29M621 645l26-31 9 39" fill="#F7B2B9"/>
+    <path d="M573 666c20-26 45-25 63-2" fill="#8C7B6E"/>
+    <path d="M620 696c24-19 47-17 58 0" fill="#8C7B6E"/>
+    <circle cx="575" cy="700" r="4" fill="#15171A"/>
+    <circle cx="620" cy="700" r="4" fill="#15171A"/>
+    <path d="M585 723c11 10 21 10 32 0"/>
+    <path d="M664 715c38 3 49 38 38 77-9 34-36 52-67 33" fill="#8C7B6E"/>
+    <path d="M545 709l-34-10M545 723l-35 2M650 709l33-10M650 722l35 2"/>
+
+    <!-- database cylinder -->
+    <ellipse cx="150" cy="702" rx="46" ry="18" fill="#8EC5EE"/>
+    <path d="M104 702v95c0 10 21 18 46 18s46-8 46-18v-95" fill="#8EC5EE"/>
+    <path d="M104 747c0 10 21 18 46 18s46-8 46-18"/>
+    <circle cx="177" cy="731" r="4" fill="#15171A"/>
+    <circle cx="177" cy="777" r="4" fill="#15171A"/>
+
+    <!-- books and small toy figure -->
+    <path d="M52 780h116v24H52z" fill="#FFD66F"/>
+    <path d="M63 752h116v28H63z" fill="#8EC5EE"/>
+    <circle cx="104" cy="694" r="18" fill="#F4C6A8"/>
+    <path d="M87 689c4-16 16-25 29-22 10 2 15 8 19 18-13-7-34-6-48 4z" fill="#6A4531"/>
+    <path d="M86 714h39v45H86z" fill="#EF6F4F"/>
+    <path d="M92 759v20M119 759v20"/>
+    <path d="M86 726l-12 20M125 726l12 20"/>
+
+    <!-- music notes -->
+    <path d="M548 276v-44l28-8" />
+    <circle cx="548" cy="280" r="9" fill="#15171A"/>
+    <path d="M608 332v-51l30 11" />
+    <circle cx="608" cy="336" r="9" fill="#15171A"/>
+
+    <!-- accent marks -->
+    <path d="M531 176l19-25M548 194l28-8" stroke="#FFD66F"/>
+    <path d="M675 611l19-23M692 628l24-7" stroke="#FFD66F"/>
   </g>
 
-  <g stroke="#15171A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="117" cy="118" rx="76" ry="55" fill="#fff"/>
-    <ellipse cx="221" cy="82" rx="80" ry="53" fill="#fff"/>
-    <ellipse cx="517" cy="102" rx="92" ry="59" fill="#fff"/>
-    <path d="M96 108h42v27H96z" fill="#8EC5EE"/>
-    <path d="M104 98h26v10h-26z" fill="#8EC5EE"/>
-    <path d="M194 64v31m-18-15h36" fill="none"/>
-    <path d="M196 72c18-24 42-10 42 8 0 20-23 29-42 42-20-13-42-22-42-42 0-18 24-32 42-8z" fill="#F3A45F"/>
-    <path d="M478 89c20-23 67-20 81 4 12 20 2 48-18 58-26 14-66 3-78-21-7-15-1-30 15-41z" fill="#FFD66F"/>
-    <circle cx="492" cy="100" r="4" fill="#15171A"/>
-    <circle cx="520" cy="100" r="4" fill="#15171A"/>
-    <path d="M496 116c8 6 16 6 24 0" fill="none"/>
-    <path d="M559 117c20 4 34 13 42 26-25 2-44-4-55-18z" fill="#F3A45F"/>
-  </g>
-
-  <g fill="none" stroke="#15171A" stroke-width="5" stroke-linecap="round">
-    <path d="M82 221c31-32 62-32 92 0"/>
-    <path d="M82 221v55h92v-55"/>
-    <path d="M99 244h18v18H99zm39 0h18v18h-18z" fill="#8EC5EE"/>
-    <path d="M544 231h97v68h-97z" fill="#fff"/>
-    <path d="M555 277l18-22 18 12 25-35" />
-    <circle cx="616" cy="232" r="7" fill="#F3A45F"/>
-    <path d="M66 520c26-41 78-41 104 0"/>
-    <path d="M83 527h70" />
-    <path d="M91 507c10-18 41-18 51 0" fill="#FFD66F"/>
-  </g>
-
-  <g fill="#F3A45F">
-    <circle cx="60" cy="330" r="7"/><circle cx="651" cy="372" r="7"/><circle cx="583" cy="548" r="7"/>
-  </g>
+  <path d="M650 584c18-24 43-3 28 17-9 12-22 20-28 26-6-6-20-14-28-26-14-20 11-41 28-17z" fill="#EE6C63"/>
 </svg>
