@@ -1,37 +1,60 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<Header />
-<main class="container page">
-  <p class="mono eyebrow">projects</p>
-  <h1>Things I build.</h1>
-  <p class="lead">A home for selected data, automation, and integration projects.</p>
+<BaseLayout title="Projects — George Choulakis">
+  <main class="container page">
+    <p class="eyebrow">projects</p>
+    <h1>Things I build.</h1>
+    <p class="lead">Selected patterns and projects around data, automation, reporting, and integration.</p>
 
-  <div class="project-grid">
-    <div class="card">
-      <p class="mono">Case study</p>
-      <h2>Reporting automation</h2>
-      <p>How a recurring manual reporting workflow can become a reliable, traceable system.</p>
+    <div class="project-grid">
+      <article class="card blue">
+        <div class="top mono">REPORTING / AUTOMATION</div>
+        <h2>From recurring manual work to a traceable process</h2>
+        <p>Designing the layers, checks, and handover points that make recurring reporting easier to run and easier to trust.</p>
+        <div class="chips"><span>SQL</span><span>Power BI</span><span>Automation</span></div>
+      </article>
+
+      <article class="card yellow">
+        <div class="top mono">INTEGRATION / DATA</div>
+        <h2>Making operational data usable without hiding its history</h2>
+        <p>Thinking about source systems, staging, slowly changing dimensions, validation, and clean interfaces for downstream reporting.</p>
+        <div class="chips"><span>SQL Server</span><span>ETL</span><span>Data modelling</span></div>
+      </article>
+
+      <article class="card white">
+        <div class="top mono">INTERNAL TOOLS</div>
+        <h2>Small tools that remove surprisingly large amounts of friction</h2>
+        <p>Interfaces, scripts, exports, and workflows that turn repeated business tasks into something people can operate confidently.</p>
+        <div class="chips"><span>Python</span><span>PowerShell</span><span>APIs</span></div>
+      </article>
     </div>
-    <div class="card">
-      <p class="mono">Case study</p>
-      <h2>Data integration</h2>
-      <p>Patterns for bringing operational data together without turning maintenance into a second full-time job.</p>
-    </div>
-  </div>
-</main>
-<Footer />
+
+    <section class="cta">
+      <p class="eyebrow">a note on case studies</p>
+      <h2>I write about patterns, not confidential data.</h2>
+      <p>When work originates inside a company, I keep private systems and sensitive details private while explaining the technical ideas that are useful elsewhere.</p>
+    </section>
+  </main>
+</BaseLayout>
 
 <style>
-.page { padding-top:70px; }
-.eyebrow { color:#4b6b88; text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; }
-h1 { font-size:clamp(3rem,7vw,6rem); line-height:1; letter-spacing:-.05em; margin:.3rem 0 1.3rem; }
-.lead { color:var(--muted); font-size:1.2rem; }
-.project-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:50px; }
-.card { border:1px solid var(--border); border-radius:24px; padding:28px; background:#fff; }
-.card p { color:var(--muted); }
-.card .mono { color:#8b98a5; font-size:.8rem; }
-@media (max-width:700px){ .project-grid{grid-template-columns:1fr;} }
+.page { padding-top:75px; }
+h1 { font-size:clamp(3.6rem,8vw,7rem); line-height:.94; letter-spacing:-.06em; margin:16px 0 24px; }
+.lead { color:var(--muted); font-size:1.2rem; max-width:720px; }
+.project-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:65px; }
+.card { min-height:390px; border:2px solid #111; border-radius:30px; padding:30px; box-shadow:6px 6px 0 #111; display:flex; flex-direction:column; }
+.card:nth-child(3) { grid-column:1 / -1; min-height:300px; }
+.blue { background:var(--blue-soft); }
+.yellow { background:#fff3c8; }
+.white { background:#fff; }
+.top { font-size:.72rem; color:#66717c; }
+.card h2 { font-size:clamp(2rem,4vw,3.2rem); line-height:1; letter-spacing:-.045em; margin:28px 0 20px; max-width:800px; }
+.card p { color:#515c67; max-width:760px; }
+.chips { margin-top:auto; display:flex; gap:8px; flex-wrap:wrap; }
+.chips span { border:1.5px solid #111; border-radius:999px; padding:6px 10px; background:#fff; font-size:.78rem; font-weight:700; }
+.cta { margin:110px 0 20px; max-width:850px; }
+.cta h2 { font-size:clamp(2.3rem,5vw,4rem); line-height:1; letter-spacing:-.04em; margin:15px 0; }
+.cta > p:last-child { color:var(--muted); }
+@media(max-width:760px){ .project-grid{grid-template-columns:1fr;} .card:nth-child(3){grid-column:auto;} }
 </style>
