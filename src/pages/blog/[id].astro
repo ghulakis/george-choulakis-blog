@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({data}) => !data.draft);
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'long', year:'numeric' });
+---
+<BaseLayout title={`${post.data.title} — George Choulakis`} description={post.data.description}>
+  <main class="container article">
+    <a class="back mono" href={import.meta.env.BASE_URL + 'blog/'}>← writing</a>
+    <p class="meta mono">{fmt.format(post.data.pubDate)} · {post.data.tags.join(' · ')}</p>
+    <h1>{post.data.title}</h1>
+    <p class="dek">{post.data.description}</p>
+    <article class="prose">
+      <Content />
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.article { max-width:860px; padding-top:65px; }
+.back { font-size:.78rem; color:#61707d; }
+.meta { margin-top:55px; font-size:.74rem; color:#8c949e; text-transform:uppercase; letter-spacing:.06em; }
+h1 { font-size:clamp(3rem,7vw,6.5rem); line-height:.96; letter-spacing:-.058em; margin:15px 0 24px; }
+.dek { color:var(--muted); font-size:1.25rem; max-width:760px; }
+article { margin-top:65px; border-top:1px solid var(--border); padding-top:30px; }
+article :global(h2) { margin-top:2.8rem; font-size:2rem; letter-spacing:-.03em; }
+article :global(p), article :global(li) { font-size:1.08rem; color:#4f5964; }
+article :global(strong) { color:var(--text); }
+</style>
