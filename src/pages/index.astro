@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
-const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const url = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 ---
 <BaseLayout>
   <main>
@@ -13,8 +13,8 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
           I write about data, automation, reporting systems, and the surprisingly human problems hiding behind technical work.
         </p>
         <div class="actions">
-          <a class="primary" href={url('/about')}>Meet George</a>
-          <a class="secondary" href={url('/blog')}>Read the notes</a>
+          <a class="primary" href={url('/about/')}>Meet George</a>
+          <a class="secondary" href={url('/blog/')}>Read the notes</a>
         </div>
         <p class="micro mono">SQL · Power BI · Python · integrations · rubber-duck debugging</p>
       </div>
@@ -46,19 +46,19 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
     </section>
 
     <section class="container cards">
-      <a class="card blue" href={url('/blog')}>
+      <a class="card blue" href={url('/blog/')}>
         <span class="mono">01 / WRITING</span>
         <h3>Notes from the messy middle</h3>
         <p>Architecture, debugging, data quality, BI, process design, and lessons from building.</p>
         <b>Read writing →</b>
       </a>
-      <a class="card yellow" href={url('/projects')}>
+      <a class="card yellow" href={url('/projects/')}>
         <span class="mono">02 / PROJECTS</span>
         <h3>Systems that solve real work</h3>
         <p>Selected examples of reporting automation, data integration, and internal tools.</p>
         <b>See projects →</b>
       </a>
-      <a class="card white" href={url('/about')}>
+      <a class="card white" href={url('/about/')}>
         <span class="mono">03 / HUMAN</span>
         <h3>There is music in the database</h3>
         <p>Cats, choir, guitars, wired headphones, tiny figures, and a few debugging ducks.</p>
