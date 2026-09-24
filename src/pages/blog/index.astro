@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const posts = (await getCollection('blog', ({data}) => !data.draft))
   .sort((a,b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'short', year:'numeric' });
@@ -14,7 +14,7 @@ const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'short', year:'
 
     <div class="posts">
       {posts.map((post, index) => (
-        <a class="post" href={`${base}blog/${post.id}/`}>
+        <a class="post" href={`${base}/blog/${post.id}/`}>
           <div class="number mono">{String(index + 1).padStart(2,'0')}</div>
           <div>
             <div class="meta mono">{fmt.format(post.data.pubDate)} · {post.data.tags.join(' · ')}</div>
