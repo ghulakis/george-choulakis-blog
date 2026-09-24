@@ -1,15 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
+
+const brands = [
+  { name: 'NEW YORKER', domain: 'newyorker.de' },
+  { name: 'JACK WOLFSKIN', domain: 'jack-wolfskin.com' },
+  { name: 'Philip Morris International', domain: 'pmi.com' },
+  { name: 'EY', domain: 'ey.com' },
+];
 ---
 <BaseLayout title="About George Choulakis">
   <main>
     <section class="container intro">
-      <p class="eyebrow">about me</p>
-      <h1>I like the part where the mess becomes a system.</h1>
-      <p class="lead">
-        I’m George Choulakis. I work where data, automation, reporting, and business processes meet.
-      </p>
+      <div>
+        <p class="eyebrow">about me</p>
+        <h1>Data, systems, business — and the space in between.</h1>
+        <p class="lead">
+          I’m George Choulakis, a data and integration specialist with experience across retail,
+          FP&amp;A, e-commerce, reporting, and data engineering. I like turning complicated business
+          processes into systems that are easier to understand, trust, and maintain.
+        </p>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/george-choulakis/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href={`${base}timeline/`}>Career timeline →</a>
+        </div>
+      </div>
+
+      <div class="portrait">
+        <img src={`${base}illustrations/george-thinking.svg`} alt="Doodle portrait of George thinking about data, music and automation" />
+      </div>
     </section>
 
     <section class="container visual">
@@ -18,54 +37,104 @@ const base = import.meta.env.BASE_URL;
 
     <section class="container story">
       <div class="prose">
-        <h2>What I do</h2>
+        <h2>My work</h2>
         <p>
-          Most of my work starts with something slightly uncomfortable: an Excel process that takes too long,
-          data living in several systems, reports that people no longer fully trust, or a workflow that depends
-          on too much manual effort.
+          My career has moved through commercial operations, finance, reporting, data engineering,
+          and integration. That mix shaped the way I work today: I rarely see a technical problem as
+          only technical. Usually there is also a process, a definition, a handover, or a business rule
+          that needs to be understood first.
         </p>
         <p>
-          I enjoy tracing that problem back to its structure, then building something clearer: a data model,
-          an integration, a reporting layer, an automated process, or simply a better way for people to understand what is happening.
-        </p>
-
-        <h2>How I think about technical work</h2>
-        <p>
-          A technically correct system can still be a bad system if nobody understands it, maintaining it is painful,
-          or it quietly creates more work somewhere else. I care about the boring parts: naming, handovers, failure states,
-          documentation, and whether the next person can reason about what was built.
+          I work mainly with SQL, Power BI, Power Query, Python, PowerShell, Excel automation, and data
+          integration workflows. I’m especially interested in reporting architecture, operational data,
+          process automation, and internal tools that remove repetitive work.
         </p>
 
-        <h2>And outside the database?</h2>
+        <h2>Career in one sentence</h2>
         <p>
-          Music has been part of my life for years. I sing, play guitar, nearly always have white wired headphones nearby,
-          and have a soft spot for cats, Playmobil figures, and rubber ducks with unexpectedly senior debugging responsibilities.
+          From e-commerce and reporting at Philip Morris International, to data engineering at EY,
+          FP&amp;A reporting at Jack Wolfskin, and now sales data and integration at NEW YORKER —
+          I’ve kept moving toward work where systems, data, and business decisions meet.
+        </p>
+
+        <h2>How I like to build</h2>
+        <p>
+          I care about the unglamorous details: naming things clearly, making failures visible,
+          documenting logic, preserving history, and leaving a system understandable for the next person.
+          A solution is more useful when people know what it does and why they can trust it.
+        </p>
+
+        <h2>Outside the database</h2>
+        <p>
+          Music has been part of my life for years. I sing, play guitar, almost always have white wired
+          headphones nearby, and have a soft spot for cats, Playmobil figures, and rubber ducks with
+          suspiciously strong debugging opinions.
         </p>
       </div>
 
       <aside>
         <div class="note">
-          <span class="mono">CURRENT INTERESTS</span>
-          <p>Data integration</p>
-          <p>Reporting automation</p>
-          <p>Business intelligence</p>
-          <p>Internal tools</p>
-          <p>Technical storytelling</p>
+          <span class="mono">TOOLBOX</span>
+          <p>Power BI &amp; DAX</p>
+          <p>SQL Server / T-SQL</p>
+          <p>Python</p>
+          <p>Power Query</p>
+          <p>PowerShell</p>
+          <p>Excel automation</p>
+          <p>SAP analytics</p>
         </div>
       </aside>
+    </section>
+
+    <section class="container brands">
+      <div class="brand-copy">
+        <p class="eyebrow">brands I’ve worked with</p>
+        <h2>Different industries, same curiosity about how work really flows.</h2>
+      </div>
+      <div class="brand-grid">
+        {brands.map((brand) => (
+          <div class="brand-card">
+            <img
+              src={`https://logo.clearbit.com/${brand.domain}`}
+              alt={`${brand.name} logo`}
+              loading="lazy"
+              onerror="this.style.display='none'"
+            />
+            <strong>{brand.name}</strong>
+          </div>
+        ))}
+      </div>
+      <p class="brand-note">Employer logos are shown only to identify organizations in my career history.</p>
     </section>
   </main>
 </BaseLayout>
 
 <style>
-.intro { padding-top:75px; max-width:960px; margin-left:auto; margin-right:auto; }
+.intro { padding-top:75px; display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:70px; align-items:center; }
 h1 { font-size:clamp(3.3rem,7.5vw,7rem); line-height:.94; letter-spacing:-.06em; margin:18px 0 26px; }
-.lead { color:var(--muted); font-size:1.25rem; max-width:760px; }
-.visual { margin-top:58px; }
+.lead { color:var(--muted); font-size:1.22rem; max-width:780px; }
+.links { display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+.links a { border:1.5px solid #111; border-radius:999px; padding:10px 15px; font-weight:800; background:#fff; box-shadow:3px 3px 0 var(--yellow); }
+.portrait img { border:2px solid #111; border-radius:32px; box-shadow:7px 7px 0 #111; transform:rotate(1.5deg); }
+.visual { margin-top:70px; }
 .visual img { width:100%; border:2px solid #111; border-radius:32px; box-shadow:7px 7px 0 #111; }
 .story { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:80px; padding-top:85px; }
 .note { position:sticky; top:25px; border:2px solid #111; padding:22px; border-radius:24px; background:#fff3c8; transform:rotate(1.5deg); box-shadow:4px 4px 0 #111; }
 .note span { font-size:.7rem; }
 .note p { margin:.75rem 0; font-weight:700; color:#3e454c; }
-@media(max-width:800px){ .story{grid-template-columns:1fr;} .note{position:static;} }
+.brands { padding-top:110px; }
+.brand-copy { max-width:850px; }
+.brand-copy h2 { font-size:clamp(2.5rem,5vw,4.6rem); line-height:1; letter-spacing:-.045em; margin:15px 0 35px; }
+.brand-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.brand-card { min-height:150px; border:1.5px solid #111; border-radius:24px; background:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:20px; }
+.brand-card img { max-height:48px; max-width:150px; object-fit:contain; }
+.brand-card strong { text-align:center; font-size:.9rem; }
+.brand-note { color:var(--muted); font-size:.78rem; margin-top:16px; }
+@media(max-width:900px){
+  .intro,.story{grid-template-columns:1fr;}
+  .portrait{max-width:460px;}
+  .note{position:static;}
+  .brand-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:520px){ .brand-grid{grid-template-columns:1fr;} }
 </style>
