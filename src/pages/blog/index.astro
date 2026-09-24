@@ -1,37 +1,43 @@
 ---
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import '../../styles/global.css';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const posts = (await getCollection('blog', ({data}) => !data.draft))
+  .sort((a,b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'short', year:'numeric' });
 ---
-<Header />
-<main class="container page">
-  <p class="mono eyebrow">writing</p>
-  <h1>Notes from the messy middle.</h1>
-  <p class="lead">Data, automation, reporting systems, architecture, and the practical details that usually get left out.</p>
+<BaseLayout title="Writing — George Choulakis" description="Technical notes on data, automation, BI, integration, and the systems behind business work.">
+  <main class="container page">
+    <p class="eyebrow">writing</p>
+    <h1>Notes from the messy middle.</h1>
+    <p class="lead">Data, automation, reporting systems, architecture, and the practical details that usually get left out.</p>
 
-  <div class="posts">
-    <article>
-      <span class="mono">Coming soon</span>
-      <h2>Why reporting systems fail before the dashboard</h2>
-      <p>Thoughts on source data, trust, ownership, and why the visualization is usually not the real problem.</p>
-    </article>
-    <article>
-      <span class="mono">Coming soon</span>
-      <h2>From manual export to repeatable process</h2>
-      <p>A practical look at turning recurring spreadsheet work into a maintainable flow.</p>
-    </article>
-  </div>
-</main>
-<Footer />
+    <div class="posts">
+      {posts.map((post, index) => (
+        <a class="post" href={`${base}blog/${post.id}/`}>
+          <div class="number mono">{String(index + 1).padStart(2,'0')}</div>
+          <div>
+            <div class="meta mono">{fmt.format(post.data.pubDate)} · {post.data.tags.join(' · ')}</div>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
 
 <style>
-.page { padding-top:70px; }
-.eyebrow { color:#4b6b88; text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; }
-h1 { font-size:clamp(3rem,7vw,6rem); max-width:900px; line-height:1; letter-spacing:-.05em; margin:.3rem 0 1.3rem; }
+.page { padding-top:75px; }
+h1 { font-size:clamp(3.5rem,8vw,7rem); max-width:940px; line-height:.94; letter-spacing:-.06em; margin:16px 0 24px; }
 .lead { max-width:760px; color:var(--muted); font-size:1.2rem; }
-.posts { margin-top:60px; display:grid; gap:0; }
-article { border-top:1px solid var(--border); padding:28px 0; }
-article span { color:#8b98a5; font-size:.8rem; }
-article h2 { font-size:1.8rem; margin:.45rem 0; }
-article p { color:var(--muted); max-width:720px; }
+.posts { margin-top:70px; border-top:1px solid var(--border); }
+.post { display:grid; grid-template-columns:70px 1fr auto; gap:22px; padding:30px 0; border-bottom:1px solid var(--border); align-items:start; }
+.post:hover h2 { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
+.number,.meta { color:#8c949e; font-size:.72rem; }
+.post h2 { margin:.5rem 0 .5rem; font-size:clamp(1.5rem,3vw,2.25rem); letter-spacing:-.035em; }
+.post p { color:var(--muted); max-width:760px; margin:0; }
+.arrow { font-size:1.5rem; }
+@media(max-width:650px){ .post{grid-template-columns:1fr auto;} .number{display:none;} }
 </style>
