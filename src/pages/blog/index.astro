@@ -1,0 +1,37 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+---
+<Header />
+<main class="container page">
+  <p class="mono eyebrow">writing</p>
+  <h1>Notes from the messy middle.</h1>
+  <p class="lead">Data, automation, reporting systems, architecture, and the practical details that usually get left out.</p>
+
+  <div class="posts">
+    <article>
+      <span class="mono">Coming soon</span>
+      <h2>Why reporting systems fail before the dashboard</h2>
+      <p>Thoughts on source data, trust, ownership, and why the visualization is usually not the real problem.</p>
+    </article>
+    <article>
+      <span class="mono">Coming soon</span>
+      <h2>From manual export to repeatable process</h2>
+      <p>A practical look at turning recurring spreadsheet work into a maintainable flow.</p>
+    </article>
+  </div>
+</main>
+<Footer />
+
+<style>
+.page { padding-top:70px; }
+.eyebrow { color:#4b6b88; text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; }
+h1 { font-size:clamp(3rem,7vw,6rem); max-width:900px; line-height:1; letter-spacing:-.05em; margin:.3rem 0 1.3rem; }
+.lead { max-width:760px; color:var(--muted); font-size:1.2rem; }
+.posts { margin-top:60px; display:grid; gap:0; }
+article { border-top:1px solid var(--border); padding:28px 0; }
+article span { color:#8b98a5; font-size:.8rem; }
+article h2 { font-size:1.8rem; margin:.45rem 0; }
+article p { color:var(--muted); max-width:720px; }
+</style>
