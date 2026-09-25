@@ -8,7 +8,7 @@ const roles = [
     company: 'NEW YORKER',
     role: 'Sales Data & Integration Specialist',
     location: 'Braunschweig, Germany',
-    domain: 'newyorker.de',
+    logo: 'new-yorker',
     summary: 'Sales data, integrations, reporting processes, and internal tools in a large retail environment.',
     tags: ['SQL Server', 'Power BI', 'Automation', 'Integration'],
     milestone: 'Moving deeper into operational data architecture and business applications.'
@@ -18,7 +18,7 @@ const roles = [
     company: 'Airline client',
     role: 'Freelance Revenue Controller',
     location: 'Athens, Greece',
-    domain: null,
+    logo: null,
     summary: 'Revenue-control and reporting work combining financial analysis with operational data.',
     tags: ['Revenue', 'Reporting', 'Excel', 'Analysis'],
     milestone: 'Independent project work sharpened my focus on business-facing analytics.'
@@ -28,7 +28,7 @@ const roles = [
     company: 'JACK WOLFSKIN',
     role: 'FP&A Reporting Specialist',
     location: 'Germany',
-    domain: 'jack-wolfskin.com',
+    logo: 'jack-wolfskin',
     summary: 'FP&A reporting, planning support, and analytics with a strong BI and finance-data focus.',
     tags: ['FP&A', 'SAP Analytics Cloud', 'Power BI', 'Reporting'],
     milestone: 'Expanded from operational reporting into finance and planning.'
@@ -38,7 +38,7 @@ const roles = [
     company: 'Philip Morris International',
     role: 'e-Business Distribution Executive',
     location: 'Athens, Greece',
-    domain: 'pmi.com',
+    logo: 'pmi',
     summary: 'Commercial and distribution analytics for e-business, including reporting, process design, stock-related data, and cross-functional coordination.',
     tags: ['e-Commerce', 'Analytics', 'SAP', 'Process'],
     milestone: 'Returned to a commercial role with stronger engineering and systems thinking.'
@@ -48,7 +48,7 @@ const roles = [
     company: 'EY',
     role: 'Junior Data Engineer',
     location: 'Athens, Greece',
-    domain: 'ey.com',
+    logo: 'ey',
     summary: 'Designed and tested ETL processes, supported data warehousing work, debugging, and UAT documentation.',
     tags: ['Data Engineering', 'SQL', 'ETL', 'Consulting'],
     milestone: 'A deliberate move into data engineering to deepen the technical side of my profile.'
@@ -58,7 +58,7 @@ const roles = [
     company: 'Philip Morris International',
     role: 'Reporting & Systems Executive',
     location: 'Athens, Greece',
-    domain: 'pmi.com',
+    logo: 'pmi',
     summary: 'Reporting systems, operational reporting, dashboards, and internal tools supporting commercial teams.',
     tags: ['SQL Server', 'Power BI', 'Reporting', 'Systems'],
     milestone: 'Promoted after building reporting solutions and documenting processes.'
@@ -68,7 +68,7 @@ const roles = [
     company: 'Philip Morris International',
     role: 'e-Commerce Deployment Executive',
     location: 'Athens, Greece',
-    domain: 'pmi.com',
+    logo: 'pmi',
     summary: 'Collected and analysed e-commerce data, supported digital sales reporting, and worked across customer-care and logistics processes.',
     tags: ['e-Commerce', 'Operations', 'Data', 'Deployment'],
     milestone: 'Started through INKOMPASS and transitioned into a full-time role.'
@@ -116,8 +116,8 @@ const side = [
             <div class="card">
               <div class="top">
                 <div class="logo-wrap">
-                  {item.domain
-                    ? <img src={`https://logo.clearbit.com/${item.domain}`} alt={`${item.company} logo`} loading="lazy" onerror="this.style.display='none'" />
+                  {item.logo
+                    ? <img src={`${base}/logos/${item.logo}.webp`} alt={`${item.company} logo`} loading="lazy" />
                     : <span class="logo-fallback">✈</span>}
                 </div>
                 <div>
