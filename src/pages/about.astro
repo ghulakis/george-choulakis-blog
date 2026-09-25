@@ -3,10 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const brands = [
-  { name: 'NEW YORKER', domain: 'newyorker.de' },
-  { name: 'JACK WOLFSKIN', domain: 'jack-wolfskin.com' },
-  { name: 'Philip Morris International', domain: 'pmi.com' },
-  { name: 'EY', domain: 'ey.com' },
+  { name: 'NEW YORKER', logo: 'new-yorker' },
+  { name: 'JACK WOLFSKIN', logo: 'jack-wolfskin' },
+  { name: 'Philip Morris International', logo: 'pmi' },
+  { name: 'EY', logo: 'ey' },
+  { name: 'SKY express', logo: 'sky-express' },
 ];
 ---
 <BaseLayout title="About George Choulakis">
@@ -101,7 +102,7 @@ const brands = [
         {brands.map((brand) => (
           <div class="brand-card">
             <img
-              src={`https://logo.clearbit.com/${brand.domain}`}
+              src={`${base}/logos/${brand.logo}.webp`}
               alt={`${brand.name} logo`}
               loading="lazy"
               onerror="this.style.display='none'"
@@ -132,7 +133,7 @@ h1 { font-size:clamp(3.3rem,7.5vw,7rem); line-height:.94; letter-spacing:-.06em;
 .brands { padding-top:110px; }
 .brand-copy { max-width:850px; }
 .brand-copy h2 { font-size:clamp(2.5rem,5vw,4.6rem); line-height:1; letter-spacing:-.045em; margin:15px 0 35px; }
-.brand-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.brand-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:18px; }
 .brand-card { min-height:150px; border:1.5px solid #111; border-radius:24px; background:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:20px; }
 .brand-card img { max-height:48px; max-width:150px; object-fit:contain; }
 .brand-card strong { text-align:center; font-size:.9rem; }
