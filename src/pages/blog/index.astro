@@ -8,10 +8,21 @@ const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'short', year:'
 ---
 <BaseLayout title="Writing — George Choulakis" description="Technical notes on data, automation, BI, integration, and the systems behind business work.">
   <main class="container page">
-    <p class="eyebrow">writing</p>
-    <h1>Notes from the messy middle.</h1>
-    <p class="lead">Data, automation, reporting systems, architecture, and the practical details that usually get left out.</p>
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">writing</p>
+        <h1>Notes from the messy middle.</h1>
+        <p class="lead">Data, automation, reporting systems, architecture, and the practical details that usually get left out.</p>
+      </div>
+      <img class="char" src={`${base}/illustrations/characters/george-reading.webp`} alt="George reading a book" />
+    </div>
 
+    {posts.length === 0 && (
+      <div class="empty">
+        <img class="char" src={`${base}/illustrations/characters/cat-sleeping.webp`} alt="A sleeping cat" />
+        <p>Nothing published yet. The cat is guarding the drafts.</p>
+      </div>
+    )}
     <div class="posts">
       {posts.map((post, index) => (
         <a class="post" href={`${base}/blog/${post.id}/`}>
@@ -29,6 +40,8 @@ const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'short', year:'
 </BaseLayout>
 
 <style>
+.empty { display:grid; justify-items:center; gap:10px; padding:60px 0; color:var(--muted); }
+.empty .char { width:220px; }
 .page { padding-top:75px; }
 h1 { font-size:clamp(3.5rem,8vw,7rem); max-width:940px; line-height:.94; letter-spacing:-.06em; margin:16px 0 24px; }
 .lead { max-width:760px; color:var(--muted); font-size:1.2rem; }

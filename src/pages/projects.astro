@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <BaseLayout title="Projects — George Choulakis">
   <main class="container page">
-    <p class="eyebrow">projects</p>
-    <h1>Things I build.</h1>
-    <p class="lead">Selected patterns and projects around data, automation, reporting, and integration.</p>
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">projects</p>
+        <h1>Things I build.</h1>
+        <p class="lead">Selected patterns and projects around data, automation, reporting, and integration.</p>
+      </div>
+      <img class="char" src={`${base}/illustrations/characters/george-laptop.webp`} alt="George typing on a laptop" />
+    </div>
 
     <div class="project-grid">
       <article class="card blue">
@@ -31,6 +37,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
 
     <section class="cta">
+      <img class="char cta-char" src={`${base}/illustrations/characters/george-thumbs-up.webp`} alt="George giving a thumbs up" loading="lazy" />
       <p class="eyebrow">a note on case studies</p>
       <h2>I write about patterns, not confidential data.</h2>
       <p>When work originates inside a company, I keep private systems and sensitive details private while explaining the technical ideas that are useful elsewhere.</p>
@@ -39,6 +46,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+.cta { position:relative; }
+.cta-char { float:right; width:clamp(120px,15vw,180px); margin:0 0 10px 24px; }
 .page { padding-top:75px; }
 h1 { font-size:clamp(3.6rem,8vw,7rem); line-height:.94; letter-spacing:-.06em; margin:16px 0 24px; }
 .lead { color:var(--muted); font-size:1.2rem; max-width:720px; }

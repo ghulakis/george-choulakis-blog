@@ -20,7 +20,7 @@ const url = (path: string) => `${base}/${path.replace(/^\//, '')}`;
       </div>
 
       <div class="art-wrap">
-        <img src={url('/illustrations/george-thinking.webp')} alt="Doodle of George thinking about data, music and automation" />
+        <div class="char-stage"><img class="char" src={url('/illustrations/characters/george-idea.webp')} alt="George in a blue hoodie, hand on chin, with a lightbulb thought bubble" /></div>
         <span class="sticker sticker-a">SELECT *</span>
         <span class="sticker sticker-b">♪</span>
       </div>
@@ -31,6 +31,7 @@ const url = (path: string) => `${base}/${path.replace(/^\//, '')}`;
       <span>Automation</span><i>→</i>
       <span>Integration</span><i>→</i>
       <span>Technical writing</span>
+      <img class="char strip-cat" src={url('/illustrations/characters/cat-walking.webp')} alt="" loading="lazy" />
     </section>
 
     <section class="container editorial">
@@ -94,11 +95,13 @@ h1 { font-size:clamp(3.6rem, 8vw, 7.6rem); line-height:.91; margin:18px 0 28px; 
 .secondary { background:#fff; box-shadow:3px 3px 0 var(--blue); }
 .micro { margin-top:22px; color:#7b8490; font-size:.72rem; }
 .art-wrap { position:relative; transform:rotate(1.2deg); }
-.art-wrap img { width:100%; border:2px solid #111; border-radius:34px; box-shadow:8px 8px 0 rgba(21,23,26,.12); }
+.art-wrap .char { width:min(100%,420px); }
 .sticker { position:absolute; border:2px solid #111; background:#fff; border-radius:999px; padding:7px 12px; font-family:'JetBrains Mono', monospace; font-weight:700; box-shadow:3px 3px 0 #111; }
 .sticker-a { top:-12px; right:28px; transform:rotate(5deg); }
 .sticker-b { bottom:25px; left:-14px; background:var(--yellow); transform:rotate(-9deg); font-size:1.25rem; }
 .strip { border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:20px 0; display:flex; justify-content:space-between; gap:18px; color:#5c6570; font-size:.9rem; font-weight:700; }
+.strip { position:relative; align-items:center; }
+.strip-cat { position:absolute; right:30%; top:-58px; height:66px; width:auto; }
 .strip i { font-style:normal; color:#b0b5bb; }
 .editorial { display:grid; grid-template-columns:1fr 1fr; gap:70px; padding:105px 0 70px; }
 .editorial h2 { font-size:clamp(2.6rem,5vw,5rem); line-height:.98; letter-spacing:-.05em; margin:14px 0 0; }

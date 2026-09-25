@@ -27,12 +27,18 @@ const brands = [
       </div>
 
       <div class="portrait">
-        <img src={`${base}/illustrations/george-coffee.webp`} alt="Doodle of George with a coffee, listening to music" loading="eager" />
+        <div class="char-stage"><img class="char" src={`${base}/illustrations/characters/george-cat-hug.webp`} alt="George hugging his cat, eyes closed, with a small heart above" /></div>
       </div>
     </section>
 
     <section class="container visual">
-      <img src={`${base}/illustrations/george-scenes.webp`} alt="Doodle scenes of George: coffee and music, thinking about data, reading, petting a cat, and coding next to a rubber duck" loading="lazy" />
+      <p class="eyebrow">off the clock</p>
+      <div class="off-clock">
+        <figure><img class="char" src={`${base}/illustrations/characters/george-guitar.webp`} alt="George playing acoustic guitar" loading="lazy" /><figcaption>guitar, badly but happily</figcaption></figure>
+        <figure><img class="char" src={`${base}/illustrations/characters/george-coffee-break.webp`} alt="George with a cup of coffee" loading="lazy" /><figcaption>coffee first</figcaption></figure>
+        <figure><img class="char" src={`${base}/illustrations/characters/george-reading.webp`} alt="George reading a book" loading="lazy" /><figcaption>reading</figcaption></figure>
+        <figure><img class="char" src={`${base}/illustrations/characters/george-relaxing.webp`} alt="George leaning back in a chair with earphones in" loading="lazy" /><figcaption>music on, thinking off</figcaption></figure>
+      </div>
     </section>
 
     <section class="container story">
@@ -115,9 +121,10 @@ h1 { font-size:clamp(3.3rem,7.5vw,7rem); line-height:.94; letter-spacing:-.06em;
 .lead { color:var(--muted); font-size:1.22rem; max-width:780px; }
 .links { display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
 .links a { border:1.5px solid #111; border-radius:999px; padding:10px 15px; font-weight:800; background:#fff; box-shadow:3px 3px 0 var(--yellow); }
-.portrait img { border:2px solid #111; border-radius:32px; box-shadow:7px 7px 0 #111; transform:rotate(1.5deg); }
+.portrait .char-stage { transform:rotate(1.5deg); }
+.portrait .char { width:min(100%,360px); }
 .visual { margin-top:70px; }
-.visual img { width:100%; border:2px solid #111; border-radius:32px; box-shadow:7px 7px 0 #111; }
+.visual .eyebrow { margin-bottom:18px; }
 .story { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:80px; padding-top:85px; }
 .note { position:sticky; top:25px; border:2px solid #111; padding:22px; border-radius:24px; background:#fff3c8; transform:rotate(1.5deg); box-shadow:4px 4px 0 #111; }
 .note span { font-size:.7rem; }

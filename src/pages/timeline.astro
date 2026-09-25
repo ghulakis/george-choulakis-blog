@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const roles = [
   {
@@ -91,8 +92,13 @@ const side = [
 ---
 <BaseLayout title="Career Timeline — George Choulakis" description="Career timeline of George Choulakis across data, reporting, e-commerce, FP&A and integration roles.">
   <main class="container page">
-    <p class="eyebrow">my journey</p>
-    <h1>A career built by following the data upstream.</h1>
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">my journey</p>
+        <h1>A career built by following the data upstream.</h1>
+      </div>
+      <img class="char" src={`${base}/illustrations/characters/toy-figure-waving.webp`} alt="A small toy figure waving hello" />
+    </div>
     <p class="lead">
       I started close to commercial operations and gradually moved deeper into reporting, engineering,
       finance analytics, and integration. Each step added another layer to how I understand a business system.
@@ -148,6 +154,7 @@ const side = [
     </section>
 
     <section class="closing">
+      <img class="char closing-char" src={`${base}/illustrations/characters/george-excited.webp`} alt="George smiling with both fists raised" loading="lazy" />
       <p class="eyebrow">what connects the dots</p>
       <h2>I keep moving closer to the architecture of how work gets done.</h2>
       <p>
@@ -159,6 +166,8 @@ const side = [
 </BaseLayout>
 
 <style>
+.page-head .char { width:clamp(110px,14vw,170px); }
+.closing-char { float:right; width:clamp(130px,16vw,190px); margin:0 0 10px 24px; }
 .page { padding-top:75px; }
 h1 { font-size:clamp(3.4rem,7.5vw,7rem); line-height:.94; letter-spacing:-.06em; margin:16px 0 24px; max-width:1050px; }
 .lead { max-width:850px; color:var(--muted); font-size:1.2rem; }

@@ -62,14 +62,17 @@ const values = [
         </p>
       </div>
       <div class="hero-art">
-        <img src={`${base}/illustrations/george-reading.webp`} alt="George lying on the floor next to a stack of books, thinking" />
+        <div class="char-stage yellow"><img class="char" src={`${base}/illustrations/characters/george-database.webp`} alt="George working on a laptop next to a database" /></div>
       </div>
     </section>
 
     <section class="process">
-      <div class="process-head">
-        <p class="eyebrow">my working loop</p>
-        <h2>From vague problem to reliable system.</h2>
+      <div class="process-head page-head">
+        <div>
+          <p class="eyebrow">my working loop</p>
+          <h2>From vague problem to reliable system.</h2>
+        </div>
+        <img class="char duck" src={`${base}/illustrations/characters/george-duck.webp`} alt="George explaining a problem to a rubber duck" loading="lazy" />
       </div>
 
       <div class="flow">
@@ -114,9 +117,11 @@ const values = [
 .hero { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
 h1 { font-size:clamp(3.7rem,8vw,7.3rem); line-height:.93; letter-spacing:-.06em; margin:16px 0 25px; }
 .lead { color:var(--muted); font-size:1.22rem; max-width:800px; }
-.hero-art img { border:2px solid #111; border-radius:30px; box-shadow:7px 7px 0 #111; transform:rotate(1deg); }
+.hero-art .char-stage { transform:rotate(1deg); }
+.hero-art .char { width:min(100%,400px); }
 .process { margin-top:110px; }
-.process-head { max-width:850px; }
+.process-head { max-width:1100px; }
+.process-head .char.duck { width:clamp(150px,18vw,220px); margin-bottom:30px; }
 .process-head h2,.values-intro h2 { font-size:clamp(2.6rem,5vw,4.8rem); line-height:1; letter-spacing:-.045em; margin:14px 0 40px; }
 .flow { max-width:960px; }
 .step { display:grid; grid-template-columns:72px 1fr; gap:20px; align-items:stretch; }

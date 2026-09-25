@@ -43,3 +43,20 @@ button, input, textarea { font: inherit; }
 .prose p { color: var(--muted); font-size: 1.05rem; }
 .prose h2 { margin-top: 2.6rem; font-size: clamp(1.7rem, 3vw, 2.4rem); letter-spacing: -.025em; }
 ::selection { background: var(--yellow); color: var(--text); }
+
+/* Character illustrations */
+.char { display:block; height:auto; user-select:none; pointer-events:none; }
+.char-stage { background:var(--blue-soft); border:2px solid #111; border-radius:40px; box-shadow:7px 7px 0 #111; display:grid; place-items:center; padding:clamp(24px,4vw,48px); }
+.char-stage.yellow { background:#fff3c8; }
+.page-head { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:40px; align-items:end; }
+.page-head .char { width:clamp(170px,22vw,270px); margin-bottom:10px; }
+.off-clock { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.off-clock figure { margin:0; background:#fff; border:2px solid #111; border-radius:28px; padding:22px 18px 16px; box-shadow:5px 5px 0 #111; display:flex; flex-direction:column; align-items:center; justify-content:space-between; gap:12px; }
+.off-clock figure:nth-child(even) { background:var(--blue-soft); }
+.off-clock img { max-height:190px; width:auto; }
+.off-clock figcaption { font-family:'JetBrains Mono', monospace; font-size:.78rem; color:var(--muted); text-align:center; }
+@media (max-width:760px){
+  .page-head { grid-template-columns:1fr; }
+  .page-head .char { width:170px; order:-1; margin:0; }
+  .off-clock { grid-template-columns:repeat(2,1fr); }
+}
