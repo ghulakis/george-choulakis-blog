@@ -1,0 +1,112 @@
+---
+import { answers, intro, fallback } from '../data/ask-george';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const data = JSON.stringify({ answers, intro, fallback, base });
+---
+<section class="container ask" aria-labelledby="ask-title">
+  <div class="ask-copy">
+    <p class="eyebrow">ask me anything (almost)</p>
+    <h2 id="ask-title">Curious? Ask George.</h2>
+    <p>A tiny scripted chat — no AI, just answers I wrote myself.</p>
+  </div>
+  <div class="chat" data-ask={data}>
+    <div class="log" role="log" aria-live="polite"></div>
+    <div class="chips"></div>
+    <form class="input">
+      <label class="sr" for="ask-input">Your question</label>
+      <input id="ask-input" type="text" placeholder="Type a question…" autocomplete="off" maxlength="200" />
+      <button type="submit">Ask</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.chat[data-ask]');
+  if (root) {
+    const { answers, intro, fallback, base } = JSON.parse(root.dataset.ask!);
+    const log = root.querySelector('.log')!;
+    const chips = root.querySelector('.chips')!;
+    const form = root.querySelector('form')!;
+    const input = root.querySelector('input')!;
+    const avatar = `${base}/icons/george-face.webp`;
+
+    const linkify = (text: string) => {
+      const frag = document.createDocumentFragment();
+      text.replaceAll('{base}', location.origin + base).split(/(https?:\/\/\S+)/).forEach((part) => {
+        if (/^https?:\/\//.test(part)) {
+          const clean = part.replace(/[.,]$/, '');
+          const a = document.createElement('a');
+          a.href = clean; a.textContent = clean.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+          if (!clean.startsWith(location.origin)) { a.target = '_blank'; a.rel = 'noreferrer'; }
+          frag.append(a, part.slice(clean.length));
+        } else frag.append(part);
+      });
+      return frag;
+    };
+    const add = (who: 'me' | 'you', text: string) => {
+      const row = document.createElement('div');
+      row.className = `msg ${who}`;
+      if (who === 'me') { const img = document.createElement('img'); img.src = avatar; img.alt = ''; row.append(img); }
+      const bubble = document.createElement('p'); bubble.append(linkify(text)); row.append(bubble);
+      log.append(row); log.scrollTop = log.scrollHeight;
+    };
+    const reply = (text: string) => {
+      const typing = document.createElement('div'); typing.className = 'msg me typing';
+      typing.innerHTML = `<img src="${avatar}" alt="" /><p><span></span><span></span><span></span></p>`;
+      log.append(typing); log.scrollTop = log.scrollHeight;
+      setTimeout(() => { typing.remove(); add('me', text); }, 550);
+    };
+    const find = (q: string) => {
+      const s = q.toLowerCase();
+      let best: any = null, score = 0;
+      for (const item of answers) {
+        const n = item.keywords.filter((k: string) => new RegExp(`\\b${k}\\b`).test(s)).length;
+        if (n > score) { best = item; score = n; }
+      }
+      return best ? best.a : fallback;
+    };
+    const ask = (q: string, a?: string) => { add('you', q); reply(a ?? find(q)); };
+
+    add('me', intro);
+    answers.forEach((item: any) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = item.q;
+      b.addEventListener('click', () => { ask(item.q, item.a); b.remove(); });
+      chips.append(b);
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = input.value.trim(); if (!q) return;
+      input.value = ''; ask(q);
+    });
+  }
+</script>
+
+<style is:global>
+.ask { display:grid; grid-template-columns:.8fr 1.2fr; gap:50px; align-items:center; padding:30px 0 80px; }
+.ask h2 { font-size:clamp(2.3rem,4.5vw,3.8rem); line-height:1; letter-spacing:-.045em; margin:12px 0 14px; }
+.ask-copy p:not(.eyebrow) { color:var(--muted); }
+.ask .chat { background:#fff; border:2px solid #111; border-radius:30px; box-shadow:7px 7px 0 #111; padding:20px; display:flex; flex-direction:column; gap:14px; }
+.ask .log { height:300px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; padding:4px; }
+.ask .msg { display:flex; gap:10px; align-items:flex-end; max-width:88%; }
+.ask .msg p { margin:0; padding:10px 14px; border-radius:18px; border:1.5px solid #111; font-size:.95rem; line-height:1.45; }
+.ask .msg img { width:32px; height:32px; border-radius:50%; border:1.5px solid #111; flex:none; }
+.ask .msg.me p { background:var(--blue-soft); border-bottom-left-radius:6px; }
+.ask .msg.you { align-self:flex-end; }
+.ask .msg.you p { background:var(--yellow); border-bottom-right-radius:6px; }
+.ask .msg a { text-decoration:underline; font-weight:700; word-break:break-word; }
+.ask .typing p { display:flex; gap:4px; padding:14px; }
+.ask .typing span { width:6px; height:6px; border-radius:50%; background:#476981; animation:blink 1s infinite; }
+.ask .typing span:nth-child(2){animation-delay:.15s} .ask .typing span:nth-child(3){animation-delay:.3s}
+@keyframes blink { 0%,80%,100%{opacity:.25} 40%{opacity:1} }
+.ask .chips { display:flex; flex-wrap:wrap; gap:8px; }
+.ask .chips button { border:1.5px solid #111; background:#fff; border-radius:999px; padding:6px 12px; font-size:.82rem; font-weight:700; cursor:pointer; box-shadow:2px 2px 0 var(--blue); }
+.ask .chips button:hover { background:var(--blue-soft); }
+.ask .input { display:flex; gap:8px; }
+.ask .input input { flex:1; min-width:0; border:1.5px solid #111; border-radius:999px; padding:10px 16px; background:var(--bg); }
+.ask .input input:focus { outline:3px solid var(--blue); outline-offset:1px; }
+.ask .input button { border:1.5px solid #111; border-radius:999px; padding:10px 18px; background:var(--text); color:#fff; font-weight:800; cursor:pointer; box-shadow:3px 3px 0 var(--yellow); }
+.ask .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+@media (max-width:860px){ .ask { grid-template-columns:1fr; gap:24px; } .ask .log { height:260px; } }
+@media (prefers-reduced-motion:reduce){ .ask .typing span { animation:none; } }
+</style>
