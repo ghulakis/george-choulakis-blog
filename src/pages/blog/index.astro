@@ -6,7 +6,7 @@ const posts = (await getCollection('blog', ({data}) => !data.draft))
   .sort((a,b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const fmt = new Intl.DateTimeFormat('en', { day:'2-digit', month:'short', year:'numeric' });
 ---
-<BaseLayout title="Writing — George Choulakis" description="Technical notes on data, automation, BI, integration, and the systems behind business work.">
+<BaseLayout title="Writing George Choulakis" description="Technical notes on data, automation, BI, integration, and the systems behind business work.">
   <main class="container page">
     <div class="page-head">
       <div>
