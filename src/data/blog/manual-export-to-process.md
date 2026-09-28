@@ -14,12 +14,12 @@ Sometimes that works. Often it creates a robot whose full-time job is imitating 
 
 A recurring export usually contains several different activities:
 
-- selecting the right scope,
-- retrieving data,
-- cleaning or reshaping it,
-- applying business rules,
-- validating the result,
-- naming and distributing the output.
+- selecting the right scope
+- retrieving data
+- cleaning or reshaping it
+- applying business rules
+- validating the result
+- naming and distributing the output
 
 Those activities do not necessarily belong in the same tool.
 
