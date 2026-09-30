@@ -94,26 +94,25 @@ Research on gamification gives us a useful warning: the design matters more than
 >
 > They reviewed 30 interventions with 3,202 participants.
 > Academic performance improved with Hedges' g = 0.504, which falls in the conventional medium-effect range.
-> Learners often valued clear goals and feedback. Some disliked gamification when it added pressure or little value [2]
+> Learners often valued clear goals and feedback. Some disliked gamification when it added pressure or little value. [2]
 
 > SAILER, HENSE, MAYR & MANDL, 2017
 >
 > This experiment tested how specific game elements affect psychological needs.
 > Badges, leaderboards and performance graphs supported feelings of competence, while avatars, meaningful stories and teammates supported social relatedness.
-> The result shows that different game elements can influence people in different ways [3]
+> The result shows that different game elements can influence people in different ways. [3]
 
 > MEKLER ET AL., 2017
 >
 > Points, levels and leaderboards improved performance in an image-tagging task,
 > but they did not increase intrinsic motivation or feelings of competence.
-> Visible rewards can change behavior without making the activity itself more meaningful [4]
+> Visible rewards can change behavior without making the activity itself more meaningful. [4]
 
 > LANDERS, 2014
->
- Landers' theory connects the findings above.
- He argues that game elements can change attention, practice and persistence.
- Those changes can then affect learning outcomes.
- The mechanic itself does not create knowledge. [5]
+>Landers' theory connects the findings above.
+> He argues that game elements can change attention, practice and persistence.
+> Those changes can then affect learning outcomes.
+> The mechanic itself does not create knowledge. [5]
 
 <p class="dots">• • •</p>
 
