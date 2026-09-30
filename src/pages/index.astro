@@ -18,6 +18,20 @@ const url = (path: string) => `${base}/${path.replace(/^\//, '')}`;
           <a class="secondary" href={url('/blog/')}>Read the notes</a>
         </div>
         <p class="micro mono">SQL · Power BI · Python · integrations · rubber-duck debugging</p>
+        <a
+          class="visit-counter"
+          href="https://hits.sh/ghulakis.github.io/george-choulakis-blog/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="View homepage hit statistics"
+          title="Homepage visits"
+        >
+          <img
+            src="https://hits.sh/ghulakis.github.io/george-choulakis-blog.svg?style=flat-square&label=homepage%20visits&color=9db4c8&labelColor=f7f3ea"
+            alt="Homepage visit counter"
+            loading="eager"
+          />
+        </a>
       </div>
 
       <div class="art-wrap">
@@ -97,6 +111,9 @@ h1 { font-size:clamp(3.6rem, 8vw, 7.6rem); line-height:.91; margin:18px 0 28px; 
 .primary { background:var(--text); color:#fff; box-shadow:3px 3px 0 var(--yellow); }
 .secondary { background:#fff; box-shadow:3px 3px 0 var(--blue); }
 .micro { margin-top:22px; color:#7b8490; font-size:.72rem; }
+.visit-counter { display:inline-flex; margin-top:12px; opacity:.82; transition:opacity .18s ease, transform .18s ease; }
+.visit-counter:hover { opacity:1; transform:translateY(-1px); }
+.visit-counter img { height:20px; width:auto; display:block; }
 .art-wrap { position:relative; transform:rotate(1.2deg); }
 .art-wrap .char { width:min(100%,420px); }
 .sticker { position:absolute; border:2px solid #111; background:#fff; border-radius:999px; padding:7px 12px; font-family:'JetBrains Mono', monospace; font-weight:700; box-shadow:3px 3px 0 #111; }
