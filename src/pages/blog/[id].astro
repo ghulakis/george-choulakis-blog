@@ -67,6 +67,66 @@ article :global(blockquote p:first-child) {
   letter-spacing:.055em;
   text-transform:uppercase;
 }
+article :global(.effect-guide) {
+  margin:1.5rem 0 1.8rem;
+  padding:1.15rem 1.25rem;
+  border:1px solid #d9e0e6;
+  border-radius:16px;
+  background:#fbfcfd;
+}
+article :global(.effect-guide-title) {
+  color:var(--text);
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+article :global(.effect-guide p) { margin:.55rem 0; font-size:.98rem; }
+article :global(.effect-scale) {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:.9rem 0 .7rem;
+}
+article :global(.effect-scale span) {
+  display:grid;
+  gap:2px;
+  padding:.8rem .9rem;
+  border:1px solid #d9e0e6;
+  border-radius:12px;
+  background:#fff;
+}
+article :global(.effect-scale strong) { font-size:1.12rem; }
+article :global(.effect-scale small) { color:#6f7b87; text-transform:uppercase; letter-spacing:.04em; font-size:.68rem; }
+article :global(.effect-note) { color:#7a8590; font-size:.9rem !important; }
+article :global(.research-grid) {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin:1.2rem 0 0;
+}
+article :global(.research-card) {
+  padding:1.25rem 1.3rem;
+  border:1px solid #d9e0e6;
+  border-left:4px solid #9db4c8;
+  border-radius:16px;
+  background:#f8fafb;
+}
+article :global(.research-card-wide) { grid-column:1 / -1; }
+article :global(.research-title) {
+  color:var(--text);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  margin-bottom:.7rem;
+}
+article :global(.research-card p) {
+  margin:.45rem 0;
+  font-size:.98rem;
+  line-height:1.62;
+}
+article :global(.research-card a) { font-weight:700; }
 article :global(.dots) {
   text-align:center;
   letter-spacing:.45em;
@@ -83,5 +143,8 @@ article :global(a) { text-decoration:underline; text-underline-offset:3px; }
   article { margin-top:38px; }
   article :global(h2) { font-size:1.65rem; }
   article :global(p), article :global(li) { font-size:1rem; }
+  article :global(.research-grid) { grid-template-columns:1fr; }
+  article :global(.research-card-wide) { grid-column:auto; }
+  article :global(.effect-scale) { grid-template-columns:1fr; }
 }
 </style>
